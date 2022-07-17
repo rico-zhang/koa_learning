@@ -62,7 +62,7 @@ function(ctx, next){
 
 ## 响应流程
 
-![image-20200616112945546](http://mdrs.yuanjin.tech/img/image-20200616112945546.png)
+![image-20200616112945546](Koa Api.assets/image-20200616112945546.png)
 
 当给body赋值时，`Koa`会将status自动赋值为200或204
 

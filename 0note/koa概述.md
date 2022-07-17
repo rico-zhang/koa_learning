@@ -27,11 +27,11 @@ Koa目前的版本是`koa2`
 
 `express`的主要操作对象有`app`、`req`、`res`，它们的逻辑关系如下：
 
-<img src="http://mdrs.yuanjin.tech/img/image-20200615132605132.png" alt="image-20200615132605132" style="zoom:50%;" />
+<img src="koa概述.assets/image-20200615132605132.png" alt="image-20200615132605132" style="zoom:50%;" />
 
 而在`koa`中，它的主要操作对象有`app`、`context`、`request`、`response`，它们的逻辑关系如下：
 
-<img src="http://mdrs.yuanjin.tech/img/image-20200615132844959.png" alt="image-20200615132844959" style="zoom:50%;" />
+<img src="koa概述.assets/image-20200615132844959.png" alt="image-20200615132844959" style="zoom:50%;" />
 
 ## 更友好的中间件支持
 
@@ -63,7 +63,7 @@ app.use(async function(req, res, next){
 // 得到的结果：1 2 4 3
 ```
 
-<img src="http://mdrs.yuanjin.tech/img/image-20200615134901284.png" alt="image-20200615134901284" style="zoom:50%;" />
+<img src="koa概述.assets/image-20200615134901284.png" alt="image-20200615134901284" style="zoom:50%;" />
 
 这会导致一系列的问题
 
@@ -95,8 +95,8 @@ app.use(async function(req, res, next){
 // 得到的结果：1 2 3 4
 ```
 
-<img src="http://mdrs.yuanjin.tech/img/image-20200615134918087.png" alt="image-20200615134918087" style="zoom:50%;" />
+<img src="koa概述.assets/image-20200615134918087.png" alt="image-20200615134918087" style="zoom:50%;" />
 
 可以看到，对于每个中间件，在完成了一些事情后，可以非常优雅的将控制权传递给下一个中间件，**并能够等待它完成**，当后续的中间件完成处理后，控制权又回到了自己，这种中间件模型称之为洋葱模型
 
-![clipboard.png](http://mdrs.yuanjin.tech/img/bV6DZG.png)
+![clipboard.png](koa概述.assets/bV6DZG.png)
