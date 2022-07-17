@@ -5,24 +5,20 @@
 # 创建 Koa 应用
 
 ```js
-const Koa = require("koa");
+const Koa = require('koa');
 const app = new Koa();
-const http = require("http");
+const http = require('http');
 const server = http.createServer(app.callback());
 
 server.listen(port, callback);
 ```
 
-
-
 ```js
-const Koa = require("koa");
+const Koa = require('koa');
 const app = new Koa();
 
 app.listen(port, callback);
 ```
-
-
 
 # 注册中间件
 
@@ -31,8 +27,6 @@ app.use(middleware1);
 app.use(middleware2);
 app.use(middleware3);
 ```
-
-
 
 中间件的函数格式如下：
 
@@ -43,30 +37,22 @@ function(ctx, next){
 }
 ```
 
-
-
 # context
 
-`context`中包含4个重要对象：
+`context`中包含 4 个重要对象：
 
 - `req`：`http`模块内置对象
 - `res`：`http`模块内置对象
 - `request`：`koa`封装的请求对象，用于获取请求传递的信息
 - `response`：`koa`封装的响应对象，用户设置响应信息
 
-
-
 `Koa`不建议你使用原生的对象，绝大部分情况下，都应该使用它封装的对象
-
-
 
 ## 响应流程
 
-![image-20200616112945546](Koa Api.assets/image-20200616112945546.png)
+![image-20200616112945546](KoaApi.assets/image-20200616112945546.png)
 
-当给body赋值时，`Koa`会将status自动赋值为200或204
-
-
+当给 body 赋值时，`Koa`会将 status 自动赋值为 200 或 204
 
 ## 简化 api
 
@@ -85,8 +71,8 @@ ctx.cookies.get(name); // 获取cookie
 
 ```js
 app.keys = ['im a newer secret', 'i like turtle']; // 加密的多个秘钥
-ctx.cookies.set(name, value, { signed: true}); // 设置加密的cookie
-ctx.cookies.get(name, {signed: true}); // 解密cookie
+ctx.cookies.set(name, value, { signed: true }); // 设置加密的cookie
+ctx.cookies.get(name, { signed: true }); // 解密cookie
 ```
 
 > `Koa`中的加密是利用第三方库[KeyGrip](https://github.com/jed/keygrip)完成的，该库使用多个秘钥，轮流用它们加密目标字符串，在解密时，选择合适的秘钥进行解密
@@ -107,17 +93,13 @@ ctx.cookies.get(name, {signed: true}); // 解密cookie
 
 ```js
 // 当中间件发生错误时，会抛出 error 事件
-app.on("error", err=>{
-  
-})
+app.on('error', (err) => {});
 ```
 
 你也可以手动的抛出该事件
 
 ```js
-ctx.throw([status], [msg], [properties])
+ctx.throw([status], [msg], [properties]);
 ```
 
-
-
-> 由于Koa实现了EventEmitter，除了错误处理之外，还可以利用它做别的事情
+> 由于 Koa 实现了 EventEmitter，除了错误处理之外，还可以利用它做别的事情
